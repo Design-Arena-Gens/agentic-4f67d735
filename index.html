@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice de Géométrie – Cercles Sécants</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <h1>Exercice 11 &mdash; Deux cercles sécants</h1>
+        <p>
+          Soient deux cercles <span class="math">C</span> et <span class="math">C'</span> de centres
+          respectifs <span class="math">O</span> et <span class="math">O'</span>, sécants en
+          <span class="math">A</span> et <span class="math">B</span>. Une droite &Delta; passant par
+          <span class="math">B</span> recoupe <span class="math">C</span> en <span class="math">M</span>
+          et <span class="math">C'</span> en <span class="math">N</span>.
+        </p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>1. Relation angulaire</h2>
+        <p>
+          On souhaite montrer que
+          <span class="math">2\widehat{(AM, AN)} \equiv 2\widehat{(AO, AO')} \; [2\pi]</span>.
+        </p>
+        <ol>
+          <li>
+            <strong>Quadrilatère inscrit.</strong> Les points <span class="math">A</span>,
+            <span class="math">B</span>, <span class="math">M</span> et <span class="math">N</span>
+            appartiennent au cercle circonscrit du triangle <span class="math">ABN</span> qui est le même
+            que celui de <span class="math">ABM</span>. Les angles inscrits qui interceptent un même arc
+            sont égaux, d'où
+            <span class="math">\widehat{(AM, AN)} = \widehat{(AB, AO')}.</span>
+          </li>
+          <li>
+            <strong>Angles au centre.</strong> L'angle au centre &Delta; interceptant l'arc
+            <span class="math">AN</span> vaut <span class="math">2\widehat{(AM, AN)}</span>, tandis que
+            l'angle au centre <span class="math">\widehat{(AO, AO')}</span> intercepte le même arc car il
+            s'appuie sur les points <span class="math">A</span> et <span class="math">B</span> communs.
+            Par conséquent, ces angles sont congrus modulo <span class="math">2\pi</span>.
+          </li>
+        </ol>
+      </section>
+
+      <section class="card">
+        <h2>2. Configuration de M', N' et P</h2>
+        <p>
+          Les droites <span class="math">(OM)</span> et <span class="math">(O'N)</span> se coupent en un
+          point <span class="math">P</span>. On note <span class="math">M'</span> le point diamétralement
+          opposé à <span class="math">M</span> sur <span class="math">C</span> et
+          <span class="math">N'</span> le point diamétralement opposé à <span class="math">N</span> sur
+          <span class="math">C'</span>.
+        </p>
+        <div class="card__split">
+          <article>
+            <h3>a. Alignement</h3>
+            <p>
+              Comme <span class="math">M'</span> est diamétralement opposé à <span class="math">M</span>, la
+              droite <span class="math">(MM')</span> est un diamètre de <span class="math">C</span> et est
+              orthogonal au rayon <span class="math">OM</span>. De même, <span class="math">(NN')</span>
+              est un diamètre de <span class="math">C'</span> orthogonal à
+              <span class="math">O'N</span>.
+            </p>
+            <p>
+              Le quadrilatère <span class="math">BM'N'</span> est alors inscrit dans le cercle de diamètre
+              <span class="math">BN</span> puisque les angles en <span class="math">M'</span> et
+              <span class="math">N'</span> sont droits. L'unicité du cercle de diamètre
+              <span class="math">BB</span> implique que les points <span class="math">B</span>,
+              <span class="math">M'</span> et <span class="math">N'</span> sont alignés.
+            </p>
+          </article>
+          <article>
+            <h3>b. Orientation des droites</h3>
+            <p>
+              Les angles orientés <span class="math">\widehat{(PO, PO')}</span> et
+              <span class="math">\widehat{(AO, AO')}</span> interceptent le même arc puisque
+              <span class="math">P</span> est l'intersection des droites des centres et que
+              <span class="math">O</span>, <span class="math">M</span>, <span class="math">P</span> sont
+              alignés (idem pour <span class="math">O'</span>, <span class="math">N</span> et
+              <span class="math">P</span>). L'égalité est donc vraie modulo <span class="math">\pi</span>
+              car on compare des angles formés par des rayons opposés.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card card--wide">
+        <div class="card__header">
+          <h2>Illustration dynamique</h2>
+          <p>Faites varier la direction de la droite &Delta; pour visualiser les propriétés.</p>
+        </div>
+        <div class="controls">
+          <label for="angle-slider">Orientation de &Delta; (degrés)</label>
+          <input type="range" id="angle-slider" min="5" max="175" value="55" />
+        </div>
+        <canvas id="diagram" width="720" height="480" aria-label="schéma géométrique"></canvas>
+        <div class="readout" id="readout"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Validation numérique : l'interface calcule en direct les angles et vérifie les congruences annoncées
+        dans l'exercice.
+      </p>
+    </footer>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
